@@ -12,6 +12,7 @@ class BankAccount
     }
     static void deposit(double dep)
     {
+        System.out.println("Before depositing:");
         display();
         amt+=dep;
         System.out.println("Money has been deposited!");
@@ -25,6 +26,7 @@ class BankAccount
         }
         else
         {
+            System.out.println("Before withdrawal");
             display();
             amt-=wth;
             System.out.println("Money has been withdrawn!");
