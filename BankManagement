@@ -1,0 +1,79 @@
+import java.util.*;
+class BankAccount
+{
+    private static String acName;
+    private static long acNo;
+    private static double amt;
+    BankAccount(String acName,long acNo,double amt)
+    {
+        this.acName = acName;
+        this.acNo = acNo;
+        this.amt = amt;
+    }
+    static void deposit(double dep)
+    {
+        display();
+        amt+=dep;
+        System.out.println("Money has been deposited!");
+        display();
+    }
+    static void withdraw(double wth)
+    {
+        if(wth>amt || amt==0.0)
+        {
+            System.out.println("Money cannot be withdrawn!");
+        }
+        else
+        {
+            display();
+            amt-=wth;
+            System.out.println("Money has been withdrawn!");
+            display();
+        }
+    }
+    static void display()
+    {
+        System.out.println("Account Holder Name: "+acName);
+        System.out.println("Account Number: "+acNo);
+        System.out.println("Amount: "+amt);
+    }
+    public static void main(String args[])
+    {
+        Scanner sc = new Scanner(System.in);
+        Scanner in = new Scanner(System.in);
+        System.out.println("Enter account holder's name:");
+        String acName = sc.nextLine();
+        System.out.println("Enter account number:");
+        long acNo = in.nextLong();
+        System.out.println("Enter the amount:");
+        double amt = in.nextDouble();
+        BankAccount ob = new BankAccount(acName,acNo,amt);
+        while(true)
+        {
+            System.out.println("Enter D for deposit!"); 
+            System.out.println("Enter W for withdrawal!");
+            System.out.println("Enter E for exit!");
+            System.out.println("Enter your choice:");
+            char ch = sc.nextLine().charAt(0);
+            switch(ch)
+            {
+                case 'D':
+                    System.out.println("Enter the money to be deposited:");
+                    double dep = in.nextDouble();
+                    deposit(dep);
+                    break;
+                case 'W':
+                    System.out.println("Enter the money to be withdrawn:");
+                    double wth = in.nextDouble();
+                    withdraw(wth);
+                    break;
+                case 'E':
+                    System.out.println("Thank you for choosing our services!!");
+                    System.exit(0);
+                    break;
+                default:
+                    System.out.println("Wrong Choice!");
+            }
+        }
+    }
+}
